@@ -1,0 +1,3 @@
+#!/bin/bash
+chmod gu-rwx hello
+chmod o+rwx hello
