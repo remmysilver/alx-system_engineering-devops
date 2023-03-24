@@ -1,15 +1,5 @@
-# Download puppet-lint 2.1.1
-exec { 'apt-get update':
-  command => '/usr/bin/apt-get update'
-}
+# install puppet-lint -v 2.5.0
 
-package { 'rubygems1.9.1':
-  ensure  => 'installed',
-  require => Exec['apt-get update']
-}
-
-package { 'puppet-lint':
-  ensure   => '2.1.1'
-  require  => Package['rubygems1.9.1'],
-  provider => 'gem'
+exec { 'puppet-lint':
+  command => '/usr/bin/apt-get -y install puppet-lint -v 2.5.0',
 }
