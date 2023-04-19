@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# fix container:: task 2
-pkill -f apache2
-chmod 644 /etc/nginx/nginx.conf
-sed -i "1i user nginx;" /etc/nginx/nginx.conf
-sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
-sudo -u nginx service nginx re
+# Fix container to run nginx as user: nginx on port 8080
+sudo pkill apache2
+sleep 2
+sudo chmod ugo+rw /etc/nginx/nginx.conf
+sed -i -E 's/(listen.*)80 /\18080 /g' /etc/nginx/sites-enabled/default
+sudo -u nginx nginx
